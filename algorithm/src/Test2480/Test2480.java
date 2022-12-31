@@ -1,31 +1,59 @@
 package Test2480;
 
-public class Test2480 {
-	public static void main(String[] args) {
-		int a = (int) (Math.random() * 6) + 1;
-		int b = (int) (Math.random() * 6) + 1;
-		int c = (int) (Math.random() * 6) + 1;
-		int sum = 0;
-		int max = 0;
-		if (a == b && b == c) {
-			sum = 10000 + c * 1000;
-			System.out.println("첫 번째 수 : "+a+" 두 번째 수 :"+b+" 세 번째수 : "+c+"\n당청금 : "+sum);
-		} else if (a == b || b == c) {
-			sum = 1000 + b * 100;
-			System.out.println("첫 번째 수 : "+a+" 두 번째 수 :"+b+" 세 번째수 : "+c+"\n당청금 : "+sum);
-		} else if (a == c) {
-			sum = 1000 + c * 100;
-			System.out.println("첫 번째 수 : "+a+" 두 번째 수 :"+b+" 세 번째수 : "+c+"\n당청금 : "+sum);
-		} else if (a > b && a > c) {
-			sum = a * 100;
-			System.out.println("첫 번째 수 : "+a+" 두 번째 수 :"+b+" 세 번째수 : "+c+"\n당청금 : "+sum);
-		} else if (b > c && b > a) {
-			sum = b * 100;
-			System.out.println("첫 번째 수 : "+a+" 두 번째 수 :"+b+" 세 번째수 : "+c+"\n당청금 : "+sum);
-		} else if (c > b && c > a) {
-			sum = c *100;
-			System.out.println("첫 번째 수 : "+a+" 두 번째 수 :"+b+" 세 번째수 : "+c+"\n당청금 : "+sum);
-		}
+import java.util.Scanner;
 
+public class Test2480{
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+ 
+		int a, b, c;
+		a = in.nextInt();
+		b = in.nextInt();
+		c = in.nextInt();
+ 
+		// 만약 모든 변수가 다른 경우
+		if (a != b && b != c && a != c) {
+			int max;
+			// 만약 a > b 라면
+			if (a > b) {
+				// c > a > b 라면
+				if (c > a) {
+					max = c;
+				} 
+				// a > (b, c)
+				else {
+					max = a;
+				}
+			}
+			// b > a 라면	
+			else {
+				// c > b > a 라면
+				if (c > b) {
+					max = c;
+				}
+				// b > (a, c)
+				else {
+					max = b;
+				}
+			}
+			System.out.println(max * 100);
+		}
+		// 적어도 한 쌍 이상의 서로 같은 변수가 존재할 경우
+		else {
+			// 3개의 변수가 모두 같은 경우
+			if (a == b && a == c) {
+				System.out.println(10000 + a * 1000);
+			}
+			else {
+				// a가 b혹은 c랑만 같은 경우
+				if(a == b || a == c) {
+					System.out.println(1000 + a * 100);
+				}
+				// b가 c랑 같은 경우
+				else {
+					System.out.println(1000 + b * 100);
+				}
+			}
+		}
 	}
 }

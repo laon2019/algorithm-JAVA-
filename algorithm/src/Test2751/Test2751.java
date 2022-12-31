@@ -1,23 +1,31 @@
 package Test2751;
 
 
-import java.util.Arrays;
 import java.util.Scanner;
-
-public class Test2751 {
-
+import java.util.ArrayList;
+import java.util.Collections;
+ 
+ 
+public class Test2751 {	
 	public static void main(String[] args) {
+    
 		Scanner in = new Scanner(System.in);
-		int N = in.nextInt();
-		int[] array = new int[N];
-		for(int i=0;i<N;i++) {
-			array[i] = in.nextInt();
-		}
-		Arrays.sort(array);
+		StringBuilder sb = new StringBuilder();
 		
-		for(int j : array) {
-			System.out.println(j);
+		int N = in.nextInt();
+		
+		// list 계열 중 하나를 쓰면 된다.
+		ArrayList<Integer> list = new ArrayList<>();
+		
+		for(int i = 0; i < N; i++) {
+			list.add(in.nextInt());
 		}
+		
+		Collections.sort(list);
+		
+		for(int value : list) {
+			sb.append(value).append('\n');
+		}
+		System.out.println(sb);
 	}
-
 }

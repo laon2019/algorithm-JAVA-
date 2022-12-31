@@ -1,4 +1,4 @@
-package Test1427;
+package Test1427N;
 import java.util.Scanner;
 import java.util.Arrays;
  
